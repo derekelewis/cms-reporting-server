@@ -15,7 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CMSReportingServerApplication.class)
 @WebAppConfiguration
-public class CMSReportingApplicationTests {
+public class CMSReportingServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
