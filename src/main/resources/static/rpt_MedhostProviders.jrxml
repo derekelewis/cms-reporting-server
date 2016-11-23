@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) Imaging in Motion Associates LLC, 2015 - All Rights Reserved
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  -->
+
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-07-31T12:50:53 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MedhostProviders" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b33b9c3-a3f6-4806-b3c5-7fe8da48658d">
+    <property name="com.jaspersoft.studio.data.sql.tables" value="cHJvdmlkZXIgLDE1LDE1LDFhZTM3YWRkLTgzYWEtNGUyZC1hNGMzLTk1OWY4NjZiZWNjNDs="/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="cmsdata"/>
+    <queryString>
+        <![CDATA[SELECT provider.npi, provider.provider_organization_name, provider.provider_other_organization_name, provider.provider_first_line_business_practice_location_address, provider.provider_business_practice_location_address_city_name, provider.provider_business_practice_location_address_state_name, provider.provider_business_practice_location_address_postal_code, provider.provider_business_practice_location_address_telephone_number
+FROM provider where provider.npi in (select attestation.npi from attestation where attestation.provider_stage_number='Stage 2' and vendor_name='MEDHOST' and product_name in ('MEDHOST Enterprise', 'HMS with Patient Logic', 'Healthcare Management Systems, Inc.', 'Enterprise', 'Clinicals', 'MEDHOST Clinicals')) limit 1000]]>
+    </queryString>
+    <field name="npi" class="java.lang.Long"/>
+    <field name="provider_organization_name" class="java.lang.String"/>
+    <field name="provider_other_organization_name" class="java.lang.String"/>
+    <field name="provider_first_line_business_practice_location_address" class="java.lang.String"/>
+    <field name="provider_business_practice_location_address_city_name" class="java.lang.String"/>
+    <field name="provider_business_practice_location_address_state_name" class="java.lang.String"/>
+    <field name="provider_business_practice_location_address_postal_code" class="java.lang.String"/>
+    <field name="provider_business_practice_location_address_telephone_number" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="40" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <textField>
+                <reportElement x="180" y="5" width="400" height="30" uuid="69e03cd6-850b-4e97-96cd-39cfda898479"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14"/>
+                </textElement>
+                <textFieldExpression><![CDATA["MEDHOST Providers Attested to MU2"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="35" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <staticText>
+                <reportElement x="0" y="0" width="70" height="30" uuid="fc8ffcad-f0f5-4a9d-afcd-b355c43ad785"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[NPI]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="70" y="0" width="130" height="30" uuid="f1724e25-cba5-4e7b-83cb-9bca70da356a"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Organization Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="200" y="0" width="130" height="30" uuid="59558e6e-ff52-4014-b7ea-731c44a123a9"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Other Organization Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="330" y="0" width="130" height="30" uuid="d3d83984-9f21-4394-bf3c-d2180e483096"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Street Address]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="460" y="0" width="90" height="30" uuid="1a72eb93-a58b-4ff7-8a47-9f4a932aa8b7"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[City]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="550" y="0" width="60" height="30" uuid="5a3e2980-2c9b-4160-b38b-999fd656c6e7"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[State]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="610" y="0" width="60" height="30" uuid="e6006afc-484a-4345-ae8e-85cc21a7f270"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Zip Code]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="670" y="0" width="60" height="30" uuid="903bd798-f3fe-479d-955e-f171003e6bce"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Telephone]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="25" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <textField>
+                <reportElement x="0" y="0" width="70" height="20" uuid="316bdc5c-540c-4640-a177-fd6567debec2"/>
+                <textElement verticalAlignment="Top">
+                    <font size="8"/>
+                    <paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{npi}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="70" y="0" width="130" height="20" uuid="1ee22dfd-fc0a-43dd-9273-5d3fceec0645"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_organization_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="0" width="130" height="20" uuid="ffed3f77-1cda-4914-b87e-a7f46d70cdb3"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_other_organization_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="330" y="0" width="130" height="20" uuid="b51bc103-515e-4fc7-85fc-f5b5ef90421b"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_first_line_business_practice_location_address}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="0" width="90" height="20" uuid="31addb23-45b6-45ea-960d-45e4557ddc9f"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_business_practice_location_address_city_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="550" y="0" width="60" height="20" uuid="b9f37662-140d-495f-ad12-902d52d7f560"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_business_practice_location_address_state_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="610" y="0" width="60" height="20" uuid="d1528cce-ea8a-4411-bee3-63425c38df4b"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_business_practice_location_address_postal_code}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="670" y="0" width="60" height="20" uuid="833a961d-309c-441b-bdb0-3f6020a0a5fc"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{provider_business_practice_location_address_telephone_number}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="30" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <textField>
+                <reportElement x="650" y="0" width="100" height="30" uuid="1fa9f2a1-11c5-4275-8401-c716564b5122"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="0" y="0" width="70" height="30" uuid="42345455-28ad-420a-8bae-f829585e302f"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <textField pattern="HH:mm">
+                <reportElement x="70" y="0" width="100" height="30" uuid="e96d53f8-b871-47c1-bf9b-53764f759ac4"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>
