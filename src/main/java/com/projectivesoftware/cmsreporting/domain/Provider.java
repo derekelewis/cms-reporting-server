@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server.domain;
+package com.projectivesoftware.cmsreporting.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -677,6 +677,10 @@ public class Provider implements Serializable {
     private String healthcareProviderTaxonomyGroup14;
 
     private String healthcareProviderTaxonomyGroup15;
+
+    public Provider() {
+
+    }
 
     public Long getNpi() {
         return npi;

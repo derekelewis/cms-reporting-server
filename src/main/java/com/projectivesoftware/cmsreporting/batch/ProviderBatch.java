@@ -4,28 +4,37 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server.batch;
+package com.projectivesoftware.cmsreporting.batch;
 
-import com.projectivesoftware.cmsreporting.server.domain.Provider;
-import com.projectivesoftware.cmsreporting.server.service.ProviderRepository;
+import com.projectivesoftware.cmsreporting.domain.Provider;
+import com.projectivesoftware.cmsreporting.service.ProviderRepository;
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.util.Assert;
 
 @Configuration
 public class ProviderBatch {
 
-    @Value("${com.iimassociates.cmsreporting.input.directory}")
-    private String inputDirectory;
+    private final String inputDirectory;
 
-    @Value("${com.iimassociates.cmsreporting.input.provider-filename}")
-    private String providerFileName;
+    private final String providerFileName;
+
+    @Autowired
+    public ProviderBatch(@Value("${com.projectivesoftware.cms-reporting-server.input.directory}") String inputDirectory,
+                         @Value("${com.projectivesoftware.cms-reporting-server.input.provider-filename}") String providerFileName) {
+        Assert.notNull(inputDirectory, "inputDirectory must not be null!");
+        Assert.notNull(providerFileName, "providerFileName must not be null!");
+        this.inputDirectory = inputDirectory;
+        this.providerFileName = providerFileName;
+    }
 
     @Bean
     public FlatFileItemReader<Provider> providerFileReader(LineMapper<Provider> providerLineMapper) {
@@ -34,6 +43,7 @@ public class ProviderBatch {
         FileSystemResource fileSystemResource = new FileSystemResource(inputDirectory + "/" + providerFileName);
         reader.setResource(fileSystemResource);
         reader.setLinesToSkip(1);
+        reader.setSaveState(false);
 
         try {
             reader.afterPropertiesSet();

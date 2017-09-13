@@ -4,28 +4,45 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server.batch;
+package com.projectivesoftware.cmsreporting.batch;
 
-import com.projectivesoftware.cmsreporting.server.domain.Attestation;
-import com.projectivesoftware.cmsreporting.server.service.AttestationRepository;
+import com.projectivesoftware.cmsreporting.domain.Attestation;
+import com.projectivesoftware.cmsreporting.domain.Provider;
+import com.projectivesoftware.cmsreporting.service.AttestationRepository;
+import com.projectivesoftware.cmsreporting.service.ProviderRepository;
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.util.Assert;
+
+import java.util.Optional;
 
 @Configuration
 public class AttestationBatch {
 
-    @Value("${com.iimassociates.cmsreporting.input.directory}")
-    private String inputDirectory;
+    private final String inputDirectory;
 
-    @Value("${com.iimassociates.cmsreporting.input.mu-attestation-filename}")
-    private String attestationFileName;
+    private final String attestationFileName;
+
+    private final ProviderRepository providerRepository;
+
+    @Autowired
+    public AttestationBatch(@Value("${com.projectivesoftware.cms-reporting-server.input.directory}") String inputDirectory,
+                            @Value("${com.projectivesoftware.cms-reporting-server.input.mu-attestation-filename}") String attestationFileName,
+                            ProviderRepository providerRepository) {
+        Assert.notNull(inputDirectory, "inputDirectory must not be null!");
+        Assert.notNull(attestationFileName, "attestationFileName must not be null!");
+        this.inputDirectory = inputDirectory;
+        this.attestationFileName = attestationFileName;
+        this.providerRepository = providerRepository;
+    }
 
     @Bean
     public FlatFileItemReader<Attestation> attestationFileReader(LineMapper<Attestation> attestationLineMapper) {
@@ -34,6 +51,7 @@ public class AttestationBatch {
         FileSystemResource fileSystemResource = new FileSystemResource(inputDirectory + "/" + attestationFileName);
         reader.setResource(fileSystemResource);
         reader.setLinesToSkip(1);
+        reader.setSaveState(false);
 
         try {
             reader.afterPropertiesSet();
@@ -68,7 +86,12 @@ public class AttestationBatch {
                 attestation.setPaymentYear(fieldSet.readString("paymentYear"));
                 attestation.setProviderStageNumber(fieldSet.readString("providerStageNumber"));
                 attestation.setProgramType(fieldSet.readString("programType"));
-                attestation.setNpi("".equals(fieldSet.readString("npi")) ? null : Long.parseLong(fieldSet.readString("npi")));
+
+                Optional<Provider> providerOptional = providerRepository.findById("".equals(fieldSet.readString("npi")) ? -1L : Long.parseLong(fieldSet.readString("npi")));
+                Provider provider = providerOptional.orElse(null);
+                Assert.notNull(provider, "provider must not be null!");
+                attestation.setProvider(provider);
+
                 attestation.setCcn("".equals(fieldSet.readString("ccn")) ? null : Long.parseLong(fieldSet.readString("ccn")));
                 return attestation;
         });

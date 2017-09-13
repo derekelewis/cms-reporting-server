@@ -6,3 +6,12 @@
 target/
 .DS_Store
 .floo*
+build/
+.gradle/
+cmsreporting_input/
+/*.ipr
+/*.iws
+data/
+.ideaDataSources
+dataSources/
+/ojdbc*.jar

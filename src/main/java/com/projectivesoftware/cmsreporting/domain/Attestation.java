@@ -4,11 +4,9 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server.domain;
+package com.projectivesoftware.cmsreporting.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -17,7 +15,8 @@ public class Attestation implements Serializable {
     public static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attestation_record_id_seq")
+    @SequenceGenerator(name = "attestation_record_id_seq", sequenceName = "attestation_record_id_seq", allocationSize = 1)
     private Long recordId;
 
     private Long attestationId;
@@ -56,9 +55,15 @@ public class Attestation implements Serializable {
 
     private String programType;
 
-    private Long npi;
+    @ManyToOne
+    @JoinColumn(name = "npi", nullable = false)
+    private Provider provider;
 
     private Long ccn;
+
+    public Attestation() {
+
+    }
 
     public Long getRecordId() {
         return recordId;
@@ -212,12 +217,12 @@ public class Attestation implements Serializable {
         this.programType = programType;
     }
 
-    public Long getNpi() {
-        return npi;
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setNpi(Long npi) {
-        this.npi = npi;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     public Long getCcn() {

@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server;
+package com.projectivesoftware.cmsreporting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

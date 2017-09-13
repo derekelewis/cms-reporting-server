@@ -4,12 +4,13 @@
  * Proprietary and confidential
  */
 
-package com.projectivesoftware.cmsreporting.server.configuration;
+package com.projectivesoftware.cmsreporting.configuration;
 
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
@@ -17,6 +18,16 @@ import javax.sql.DataSource;
 public class DataSourceConfiguration {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource() { return DataSourceBuilder.create().build(); }
+    @Primary
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DataSourceProperties distillehrDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DataSource distillehrDataSource() {
+        return distillehrDataSourceProperties().initializeDataSourceBuilder().build();
+    }
 }

@@ -6,11 +6,11 @@
 
 package com.projectivesoftware.cmsreporting.service;
 
-import com.projectivesoftware.cmsreporting.domain.Attestation;
+import com.projectivesoftware.cmsreporting.domain.HospitalOperator;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AttestationRepository extends PagingAndSortingRepository<Attestation, Long> {
+public interface HospitalOperatorRepository extends PagingAndSortingRepository<HospitalOperator, Long> {
 
 }
