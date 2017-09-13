@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.domain;
+package com.projectivesoftware.cmsreporting.server.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -4,9 +4,9 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.service;
+package com.projectivesoftware.cmsreporting.server.service;
 
-import com.iimassociates.cmsreporting.server.domain.Provider;
+import com.projectivesoftware.cmsreporting.server.domain.Provider;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

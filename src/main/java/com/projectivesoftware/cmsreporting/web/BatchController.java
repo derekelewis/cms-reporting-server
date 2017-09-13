@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.web;
+package com.projectivesoftware.cmsreporting.server.web;
 
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.Job;

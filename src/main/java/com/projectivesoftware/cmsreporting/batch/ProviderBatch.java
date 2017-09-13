@@ -4,10 +4,10 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.batch;
+package com.projectivesoftware.cmsreporting.server.batch;
 
-import com.iimassociates.cmsreporting.server.domain.Provider;
-import com.iimassociates.cmsreporting.server.service.ProviderRepository;
+import com.projectivesoftware.cmsreporting.server.domain.Provider;
+import com.projectivesoftware.cmsreporting.server.service.ProviderRepository;
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;

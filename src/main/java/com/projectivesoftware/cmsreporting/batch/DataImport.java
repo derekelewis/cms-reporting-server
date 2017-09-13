@@ -4,10 +4,10 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.batch;
+package com.projectivesoftware.cmsreporting.server.batch;
 
-import com.iimassociates.cmsreporting.server.domain.Attestation;
-import com.iimassociates.cmsreporting.server.domain.Provider;
+import com.projectivesoftware.cmsreporting.server.domain.Attestation;
+import com.projectivesoftware.cmsreporting.server.domain.Provider;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;

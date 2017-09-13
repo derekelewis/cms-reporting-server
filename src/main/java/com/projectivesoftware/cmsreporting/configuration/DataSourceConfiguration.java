@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.configuration;
+package com.projectivesoftware.cmsreporting.server.configuration;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;

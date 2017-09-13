@@ -4,7 +4,7 @@
  * Proprietary and confidential
  */
 
-package com.iimassociates.cmsreporting.server.configuration;
+package com.projectivesoftware.cmsreporting.server.configuration;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.launch.JobLauncher;
