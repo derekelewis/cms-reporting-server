@@ -613,6 +613,7 @@ IS
     WHERE RPT_REC_NUM = n_rpt_rec_num AND WKSHT_CD = 'S300001' AND CLMN_NUM = '01500' AND LINE_NUM = '01400';
     RETURN total_discharges;
   END;
+/
 
 CREATE OR REPLACE FUNCTION get_hosp_rpt_medicare_share_ratio(n_npi IN NUMBER, v_report_year IN VARCHAR2)
   RETURN NUMBER
@@ -667,6 +668,7 @@ IS
 
     RETURN trunc(n_medicare_share_ratio, 2);
   END;
+/
 
 CREATE OR REPLACE FUNCTION get_estimated_mu_incentive_payment_amount(n_npi IN NUMBER, v_report_year IN VARCHAR2)
   RETURN NUMBER
@@ -757,6 +759,7 @@ IS
 
     RETURN n_estimated_payment_amount * n_medicare_share_ratio;
   END;
+/
 
 CREATE VIEW mu_estimated_payment AS
   SELECT
