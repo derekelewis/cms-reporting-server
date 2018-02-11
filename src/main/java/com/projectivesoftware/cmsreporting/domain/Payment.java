@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Imaging in Motion Associates LLC, 2015 - All Rights Reserved
+ * Copyright (C) Projective Software LLC, 2017 - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  */
@@ -29,8 +29,6 @@ public class Payment implements Serializable {
 
     private String programYear;
 
-    @Column(columnDefinition = "NUMBER(9, 2)")
-    @Basic
     private Double paymentAmount;
 
     public Payment() {
