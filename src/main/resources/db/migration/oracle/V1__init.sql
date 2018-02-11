@@ -595,9 +595,9 @@ CREATE INDEX hosp_rpt_nmrc_idx1
 CREATE OR REPLACE FUNCTION get_hosp_rpt_total_discharges(n_npi IN NUMBER, v_report_year IN VARCHAR2)
   RETURN NUMBER
 IS
-  total_discharges NUMBER;
-  c_ccn            CHAR(6);
-  n_rpt_rec_num    NUMBER;
+  total_discharges HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
+  c_ccn            PAYMENT.CCN%TYPE;
+  n_rpt_rec_num    HOSP_RPT.RPT_REC_NUM%TYPE;
   BEGIN
     SELECT DISTINCT ccn
     INTO c_ccn
@@ -619,13 +619,13 @@ CREATE OR REPLACE FUNCTION get_hosp_rpt_medicare_share_ratio(n_npi IN NUMBER, v_
   RETURN NUMBER
 IS
   n_medicare_share_ratio   NUMBER;
-  c_ccn                    CHAR(6);
-  n_rpt_rec_num            NUMBER;
-  n_total_discharges       NUMBER;
-  n_inpatient_part_a_days  NUMBER;
-  n_inpatient_part_c_days  NUMBER;
-  n_total_inpatient_days   NUMBER;
-  n_total_charges          NUMBER;
+  c_ccn                    PAYMENT.CCN%TYPE;
+  n_rpt_rec_num            HOSP_RPT.RPT_REC_NUM%TYPE;
+  n_total_discharges       HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
+  n_inpatient_part_a_days  HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
+  n_inpatient_part_c_days  HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
+  n_total_inpatient_days   HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
+  n_total_charges          HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
   n_charity_charge_charges NUMBER;
   BEGIN
     SELECT DISTINCT ccn
@@ -677,7 +677,7 @@ IS
   c_first_incentive_payment_year VARCHAR2(4);
   n_transition_factor            NUMBER;
   n_estimated_payment_amount     NUMBER;
-  n_total_discharges             NUMBER;
+  n_total_discharges             HOSP_RPT_NMRC.ITM_VAL_NUM%TYPE;
   BEGIN
     SELECT get_hosp_rpt_medicare_share_ratio(n_npi, v_report_year)
     INTO n_medicare_share_ratio
