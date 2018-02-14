@@ -74,11 +74,23 @@ CREATE TABLE BATCH_JOB_EXECUTION_CONTEXT (
   REFERENCES BATCH_JOB_EXECUTION (JOB_EXECUTION_ID)
 );
 
-CREATE SEQUENCE BATCH_STEP_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 NOCYCLE;
+CREATE SEQUENCE BATCH_STEP_EXECUTION_SEQ
+  START WITH 0
+  MINVALUE 0
+  MAXVALUE 9223372036854775807
+  NOCYCLE;
 
-CREATE SEQUENCE BATCH_JOB_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 NOCYCLE;
+CREATE SEQUENCE BATCH_JOB_EXECUTION_SEQ
+  START WITH 0
+  MINVALUE 0
+  MAXVALUE 9223372036854775807
+  NOCYCLE;
 
-CREATE SEQUENCE BATCH_JOB_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 NOCYCLE;
+CREATE SEQUENCE BATCH_JOB_SEQ
+  START WITH 0
+  MINVALUE 0
+  MAXVALUE 9223372036854775807
+  NOCYCLE;
 
 CREATE INDEX batch_job_execution_idx1
   ON batch_job_execution (job_instance_id, job_execution_id);
@@ -89,15 +101,29 @@ CREATE INDEX batch_step_execution_idx1
 CREATE INDEX batch_job_execution_params_idx1
   ON batch_job_execution_params (job_execution_id, identifying, double_val, long_val, date_val, string_val, type_cd, key_name);
 
-CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE hibernate_sequence
+  START WITH 1
+  INCREMENT BY 1;
 
-CREATE SEQUENCE attestation_record_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE attestation_record_id_seq
+  START WITH 1
+  INCREMENT BY 1;
 
-CREATE SEQUENCE payment_record_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE payment_record_id_seq
+  START WITH 1
+  INCREMENT BY 1;
 
-CREATE SEQUENCE hospital_operator_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE hospital_operator_id_seq
+  START WITH 1
+  INCREMENT BY 1;
 
-CREATE SEQUENCE hospital_operator_facility_mapping_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE hospital_operator_facility_mapping_id_seq
+  START WITH 1
+  INCREMENT BY 1;
+
+CREATE SEQUENCE provider_identifier_id_seq
+  START WITH 1
+  INCREMENT BY 1;
 
 CREATE TABLE attestation (
   record_id                  NUMBER(19, 0) NOT NULL,
@@ -481,6 +507,14 @@ CREATE TABLE hospital_operator_facility_mapping (
   PRIMARY KEY (hospital_operator_facility_mapping_id)
 );
 
+CREATE TABLE provider_identifier (
+  provider_identifier_id        NUMBER(19, 0) NOT NULL,
+  npi                           NUMBER(19, 0),
+  provider_identifier_type_code VARCHAR2(255 CHAR),
+  provider_identifier_value     VARCHAR2(255 CHAR),
+  PRIMARY KEY (provider_identifier_id)
+);
+
 ALTER TABLE attestation
   ADD CONSTRAINT FKmh8532owhvpqa6jhxnq0mvmup FOREIGN KEY (npi) REFERENCES provider;
 
@@ -492,6 +526,9 @@ ALTER TABLE hospital_operator_facility_mapping
 
 ALTER TABLE hospital_operator_facility_mapping
   ADD CONSTRAINT FK2ltjhtls8saa1tevym60trk2b FOREIGN KEY (npi) REFERENCES provider;
+
+ALTER TABLE provider_identifier
+  ADD CONSTRAINT FKc7e671c6f2d6a3f357d5b4f03 FOREIGN KEY (npi) REFERENCES provider;
 
 CREATE VIEW mu_attestation_medhost_enterprise AS
   SELECT

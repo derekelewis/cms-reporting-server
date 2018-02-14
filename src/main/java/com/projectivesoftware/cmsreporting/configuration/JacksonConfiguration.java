@@ -13,12 +13,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.util.Assert;
 
 @Configuration
 public class JacksonConfiguration {
 
     @Bean
     public Jackson2ObjectMapperBuilder jacksonBuilder(ObjectMapper objectMapperBuilder) {
+        Assert.notNull(objectMapperBuilder, "objectMapperBuilder must not be null!");
         Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder = new Jackson2ObjectMapperBuilder();
         jackson2ObjectMapperBuilder.configure(objectMapperBuilder);
         return jackson2ObjectMapperBuilder;

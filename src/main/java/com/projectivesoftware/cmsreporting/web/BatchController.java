@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Imaging in Motion Associates LLC, 2015 - All Rights Reserved
+ * Copyright (C) Projective Software LLC, 2017 - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  */
@@ -21,19 +21,19 @@ public class BatchController {
 
     private final JobLauncher jobLauncher;
 
-    private final Job dataImportJob;
+    private final Job processProviderIdentifiersJob;
 
     @Autowired
     public BatchController(JobLauncher asyncJobLauncher,
-                           Job dataImportJob) {
+                           Job processProviderIdentifiersJob) {
         Assert.notNull(asyncJobLauncher, "asyncJobLauncher must not be null!");
-        Assert.notNull(dataImportJob, "dataImportJob must not be null!");
+        Assert.notNull(processProviderIdentifiersJob, "processProviderIdentifiersJob must not be null!");
         this.jobLauncher = asyncJobLauncher;
-        this.dataImportJob = dataImportJob;
+        this.processProviderIdentifiersJob = processProviderIdentifiersJob;
     }
 
-    @RequestMapping("/dataImportJob/start")
-    public JobExecution startDataImportJob() throws Exception {
-        return jobLauncher.run(dataImportJob, new JobParameters());
+    @RequestMapping("/processProviderIdentifiersJob/start")
+    public JobExecution startProcessProviderIdentifiersJob() throws Exception {
+        return jobLauncher.run(processProviderIdentifiersJob, new JobParameters());
     }
 }

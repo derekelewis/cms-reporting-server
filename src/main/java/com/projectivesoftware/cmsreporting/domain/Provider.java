@@ -1,14 +1,19 @@
 /*
- * Copyright (C) Imaging in Motion Associates LLC, 2015 - All Rights Reserved
+ * Copyright (C) Projective Software LLC, 2017 - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  */
 
 package com.projectivesoftware.cmsreporting.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class Provider implements Serializable {
@@ -3312,5 +3317,311 @@ public class Provider implements Serializable {
 
     public void setHealthcareProviderTaxonomyGroup15(String healthcareProviderTaxonomyGroup15) {
         this.healthcareProviderTaxonomyGroup15 = healthcareProviderTaxonomyGroup15;
+    }
+
+    public Map<String, String> getProviderIdentifiers() {
+        Map<String, String> providerIdentifiers = new HashMap<>();
+
+        if (this.otherProviderIdentifierTypeCode1 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode1, otherProviderIdentifier1);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode2 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode2, otherProviderIdentifier2);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode3 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode3, otherProviderIdentifier3);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode4 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode4, otherProviderIdentifier4);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode5 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode5, otherProviderIdentifier5);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode6 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode6, otherProviderIdentifier6);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode7 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode7, otherProviderIdentifier7);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode8 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode8, otherProviderIdentifier8);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode9 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode9, otherProviderIdentifier9);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode10 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode10, otherProviderIdentifier10);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode11 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode11, otherProviderIdentifier11);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode12 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode12, otherProviderIdentifier12);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode13 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode13, otherProviderIdentifier13);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode14 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode14, otherProviderIdentifier14);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode15 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode15, otherProviderIdentifier15);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode16 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode16, otherProviderIdentifier16);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode17 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode17, otherProviderIdentifier17);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode18 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode18, otherProviderIdentifier18);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode19 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode19, otherProviderIdentifier19);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode20 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode20, otherProviderIdentifier20);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode21 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode21, otherProviderIdentifier21);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode22 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode22, otherProviderIdentifier22);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode23 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode23, otherProviderIdentifier23);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode24 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode24, otherProviderIdentifier24);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode25 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode25, otherProviderIdentifier25);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode26 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode26, otherProviderIdentifier26);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode27 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode27, otherProviderIdentifier27);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode28 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode28, otherProviderIdentifier28);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode29 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode29, otherProviderIdentifier29);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode30 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode30, otherProviderIdentifier30);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode31 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode31, otherProviderIdentifier31);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode32 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode32, otherProviderIdentifier32);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode33 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode33, otherProviderIdentifier33);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode34 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode34, otherProviderIdentifier34);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode35 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode35, otherProviderIdentifier35);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode36 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode36, otherProviderIdentifier36);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode37 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode37, otherProviderIdentifier37);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode38 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode38, otherProviderIdentifier38);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode39 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode39, otherProviderIdentifier39);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode40 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode40, otherProviderIdentifier40);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode41 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode41, otherProviderIdentifier41);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode42 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode42, otherProviderIdentifier42);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode43 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode43, otherProviderIdentifier43);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode44 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode44, otherProviderIdentifier44);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode45 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode45, otherProviderIdentifier45);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode46 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode46, otherProviderIdentifier46);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode47 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode47, otherProviderIdentifier47);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode48 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode48, otherProviderIdentifier48);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode49 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode49, otherProviderIdentifier49);
+        } else {
+            return providerIdentifiers;
+        }
+
+        if (this.otherProviderIdentifierTypeCode50 != null) {
+            providerIdentifiers.put(otherProviderIdentifierTypeCode50, otherProviderIdentifier50);
+        } else {
+            return providerIdentifiers;
+        }
+
+        return providerIdentifiers;
     }
 }

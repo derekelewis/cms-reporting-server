@@ -29,6 +29,8 @@ public class Payment implements Serializable {
 
     private String programYear;
 
+    @Column(columnDefinition = "NUMBER(9, 2)")
+    @Basic
     private Double paymentAmount;
 
     public Payment() {
