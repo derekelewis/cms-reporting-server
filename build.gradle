@@ -6,28 +6,27 @@
 
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RC1'
+        springBootVersion = '2.0.4.RELEASE'
     }
     repositories {
         maven { url "https://psmvn1.projectivesoftware.com:8443/repository/iima-maven-repository-1/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath('se.transmode.gradle:gradle-docker:1.2')
-        classpath('gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17')
+        classpath('com.bmuschko:gradle-docker-plugin:3.2.9')
         classpath('net.sf.jasperreports:jasperreports:6.4.1')
     }
 }
 
 plugins {
-    id "com.gorylenko.gradle-git-properties" version "1.4.17"
+    id "com.gorylenko.gradle-git-properties" version "1.5.1"
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
-apply plugin: 'docker'
+apply plugin: 'com.bmuschko.docker-remote-api'
 
 version = '0.0.1-SNAPSHOT'
 
@@ -77,15 +76,27 @@ task compileJasperReports {
     }
 }
 
-task buildDocker(type: Docker, dependsOn: build) {
-    applicationName = "ps-" + jar.baseName
-    tag = 'projective-software/' + applicationName
-    tagVersion = 'latest'
-    dockerfile = file('src/main/docker/Dockerfile')
-    doFirst {
-        copy {
-            from jar
-            into stageDir
-        }
-    }
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+task createDockerfile(type: Dockerfile) {
+    destFile = project.file('build/docker/Dockerfile')
+    from 'openjdk:10-jre'
+    copyFile jar.archiveName, '/' + jar.archiveName
+    entryPoint 'sh', '-c', 'java ${JAVA_OPTS} --add-modules java.se.ee -jar /' + jar.archiveName
 }
+
+task syncJarFile(type: Sync) {
+    dependsOn assemble
+    from jar.archivePath
+    into createDockerfile.destFile.parentFile
+}
+
+task buildImage(type: DockerBuildImage) {
+    dependsOn createDockerfile
+    inputDir = createDockerfile.destFile.parentFile
+    tag = 'projective-software/' + "ps-" + jar.baseName + ':latest'
+}
+
+createDockerfile.dependsOn(syncJarFile)
+buildImage.dependsOn(syncJarFile)
