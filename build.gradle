@@ -6,7 +6,7 @@
 
 buildscript {
     ext {
-        springBootVersion = '2.0.4.RELEASE'
+        springBootVersion = '2.0.5.RELEASE'
     }
     repositories {
         maven { url "https://psmvn1.projectivesoftware.com:8443/repository/iima-maven-repository-1/" }
