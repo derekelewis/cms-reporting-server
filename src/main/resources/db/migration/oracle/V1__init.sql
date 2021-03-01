@@ -1,3 +1,15 @@
+/*
+ * Copyright (c) Derek Lewis <derek.e.lewis@outlook.com>, 2021
+ */
+
+/*
+ * Copyright (c) 2021. Derek Lewis <derek.e.lewis@outlook.com>
+ */
+
+/*
+ * Copyright (c) 2021. Derek Lewis
+ */
+
 CREATE TABLE BATCH_JOB_INSTANCE (
   JOB_INSTANCE_ID NUMBER(19, 0) NOT NULL PRIMARY KEY,
   VERSION         NUMBER(19, 0),

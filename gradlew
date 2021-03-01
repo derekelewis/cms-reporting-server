@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+#
+# Copyright (c) Derek Lewis <derek.e.lewis@outlook.com>, 2021
+#
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X
