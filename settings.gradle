@@ -1,0 +1,14 @@
+/*
+ * Copyright (C) Projective Software LLC, 2017 - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ */
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+             url 'http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts'
+        }
+    }
+}

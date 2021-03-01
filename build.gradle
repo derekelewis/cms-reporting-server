@@ -8,9 +8,6 @@ buildscript {
     ext {
         springBootVersion = '2.0.5.RELEASE'
     }
-    repositories {
-        maven { url "https://psmvn1.projectivesoftware.com:8443/repository/iima-maven-repository-1/" }
-    }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath('com.bmuschko:gradle-docker-plugin:3.2.9')
@@ -32,9 +29,10 @@ version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-repositories {
-    maven { url "https://psmvn1.projectivesoftware.com:8443/repository/iima-maven-repository-1/" }
-}
+//repositories {
+//    mavenCentral()
+//    maven { url "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts" }
+//}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -48,7 +46,7 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
     compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.4.1'
     compile group: 'net.sf.jasperreports', name: 'jasperreports-fonts', version: '6.0.0'
-    compile group: 'com.oracle.jdbc', name: 'ojdbc7', version: '12.1.0.2'
+    compile group: 'com.oracle.database.jdbc', name: 'ojdbc8-production', version: '21.1.0.0'
     runtime('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.batch:spring-batch-test')
